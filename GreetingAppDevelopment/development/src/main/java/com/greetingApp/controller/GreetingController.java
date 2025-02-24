@@ -1,5 +1,6 @@
 package com.greetingApp.controller;
 
+import com.greetingApp.model.Greeting;
 import com.greetingApp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +53,6 @@ public class GreetingController {
         return greetingService.helloMessage(); // return Hello world
     }
 
-
     // Print Hello world with name
     @GetMapping("/name")
     // print hello world based on parameter passed
@@ -60,5 +60,9 @@ public class GreetingController {
         return greetingService.greetingWithName(firstName,lastName);
     }
 
-
+    // save the greeting message in the repository
+    @PostMapping("/save")
+    public Greeting addGreeting(@RequestBody Greeting greeting){
+        return greetingService.addGreeting(greeting.getMessage());
+    }
 }

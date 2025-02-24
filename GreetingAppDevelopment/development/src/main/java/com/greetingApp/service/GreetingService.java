@@ -1,9 +1,14 @@
 package com.greetingApp.service;
 
+import com.greetingApp.model.Greeting;
+import com.greetingApp.repository.GreetingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
-public class GreetingService {
+public class GreetingService implements IGreetingService {
+
     // method to print Hello world
     public String helloMessage(){
         return "Hello world";
@@ -21,4 +26,14 @@ public class GreetingService {
         }
         return "Hello world";
     }
+
+    // logic to store message in jpa
+    @Autowired
+    GreetingRepository greetingRepository;
+    @Override
+    public Greeting addGreeting(String message) {
+        Greeting greeting = new Greeting(message);
+        return greetingRepository.save(greeting);
+    }
+
 }
