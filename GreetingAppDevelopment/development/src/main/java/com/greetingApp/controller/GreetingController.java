@@ -1,5 +1,7 @@
 package com.greetingApp.controller;
 
+import com.greetingApp.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -8,7 +10,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/greeting")
 public class GreetingController {
-
     // Handle GET request
     @GetMapping
     public Map<String, String> getGreeting() {
@@ -41,5 +42,13 @@ public class GreetingController {
         Map<String, String> response = new HashMap<>();
         response.put("message", "Hello, this is a DELETE request");
         return response;
+    }
+
+    // Using service
+    @Autowired
+    GreetingService greetingService;
+    @GetMapping("/hello")
+    public String hello(){
+        return greetingService.helloMessage(); // return Hello world
     }
 }
