@@ -84,4 +84,10 @@ public class GreetingController {
     public Greeting updateMessage(@PathVariable long id,@RequestBody Greeting message){
         return  greetingService.updateMessage(id,message);
     }
+
+    // delete request to delete message
+    @DeleteMapping("/delete/{id}")
+    public boolean deleteMessage(@PathVariable long id){
+        return greetingService.deleteMessage(id);
+    }
 }

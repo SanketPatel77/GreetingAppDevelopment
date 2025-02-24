@@ -63,7 +63,17 @@ public class GreetingService implements IGreetingService {
       }else{
           return null;
       }
+    }
 
+    // method return true if message successfully deleted
+    @Override
+    public boolean deleteMessage(long id) {
+        Optional<Greeting> message = greetingRepository.findById(id);
+        if(message.isPresent()){
+            greetingRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
 

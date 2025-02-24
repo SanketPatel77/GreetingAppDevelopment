@@ -9,6 +9,6 @@ public interface IGreetingService {
     Greeting addGreeting(String message);
     Greeting getMessageByID(long Id);
     List<Greeting> getAllMessages();
-
     Greeting updateMessage(long id, Greeting newMessage);
+    boolean deleteMessage(long id);
 }
