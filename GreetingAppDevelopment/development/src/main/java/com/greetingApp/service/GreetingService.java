@@ -1,11 +1,11 @@
 package com.greetingApp.service;
 
-import com.greetingApp.GreetingAppApplication;
 import com.greetingApp.model.Greeting;
 import com.greetingApp.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -44,5 +44,12 @@ public class GreetingService implements IGreetingService {
         Optional<Greeting> greeting = greetingRepository.findById(id);
        return greeting.orElse(null);
     }
+
+    // method to get all messages
+    @Override
+    public List<Greeting> getAllMessages() {
+        return greetingRepository.findAll();
+    }
+
 
 }

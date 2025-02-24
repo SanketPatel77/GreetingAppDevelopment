@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -70,5 +71,11 @@ public class GreetingController {
     @GetMapping("/{id}")
     public Greeting getGreeting(@PathVariable Long id) {
         return greetingService.getMessageByID(id);
+    }
+
+    // get request to get all messages
+    @GetMapping("/getallmessage")
+    public List<Greeting> allMessages(){
+        return greetingService.getAllMessages();
     }
 }
