@@ -51,4 +51,14 @@ public class GreetingController {
     public String hello(){
         return greetingService.helloMessage(); // return Hello world
     }
+
+
+    // Print Hello world with name
+    @GetMapping("/name")
+    // print hello world based on parameter passed
+    public String getHelloWithName(@RequestParam(required = false) String firstName,@RequestParam (required=false)String lastName){
+        return greetingService.greetingWithName(firstName,lastName);
+    }
+
+
 }
