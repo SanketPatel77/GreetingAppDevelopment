@@ -65,4 +65,10 @@ public class GreetingController {
     public Greeting addGreeting(@RequestBody Greeting greeting){
         return greetingService.addGreeting(greeting.getMessage());
     }
+
+    // method to get message by id
+    @GetMapping("/{id}")
+    public Greeting getGreeting(@PathVariable Long id) {
+        return greetingService.getMessageByID(id);
+    }
 }
